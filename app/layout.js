@@ -1,4 +1,5 @@
 import '@styles/globals.css';
+import Provider from '@components/Providers';
 
 export const metadata = {
   title: 'Pawtastic',
@@ -8,7 +9,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="">
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }
