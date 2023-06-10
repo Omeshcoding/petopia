@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Utility */
+.flex-column {
+  @apply flex flex-col;
+}
+/* .flex-row {
+  @apply flex flex-row;
+} */
+
+.nav {
+  @apply z-30 flex  py-6 px-4 items-center text-white text-lg tracking-wider;
+}
+.nav-items {
+  @apply flex gap-6 ml-auto cursor-pointer;
+}
+
+.btn {
+  @apply bg-zinc-200 py-2 px-3;
+}
+
+.head-text {
+  @apply text-4xl font-semibold;
+}
+
+/* sm:flex-row  sm:relative sm:gap-6 md:mr-2 sm:bg-transparent sm:h-0 sm:p-0top-0 h-[100vh] p-20 bg-yellow-300  flex-col absolute */
+/* .dropdown {
+  @apply z-30 absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+} */
+
+/* .dropdown_link {
+  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+} */
