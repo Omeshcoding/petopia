@@ -11,7 +11,7 @@ const Logo = () => {
         alt="logo"
         className={`bg-white rounded-full p-2`}
       />
-      <h2 className="ml-2 w-2 font-semibold">PAWTASTIC</h2>
+      <h2 className="ml-2 w-2 font-semibold text-xl">PAWTASTIC</h2>
     </div>
   );
 };

@@ -11,18 +11,25 @@
 } */
 
 .nav {
-  @apply z-30 flex  py-6 px-4 items-center text-white text-lg tracking-wider;
+  @apply z-30 flex pt-9  px-4 items-center text-white text-lg tracking-wider mx-24;
 }
 .nav-items {
-  @apply flex gap-6 ml-auto cursor-pointer;
+  @apply flex gap-9 ml-auto cursor-pointer;
 }
 
 .btn {
   @apply bg-zinc-200 py-2 px-3;
 }
 
+/* Homepage */
 .head-text {
   @apply text-4xl font-semibold;
+}
+.hero {
+  @apply h-[100vh] w-[100%] absolute top-0  z-[-1] bg-[url('../public/images/justin-veenema-NH1d0xX6Ldk-unsplash.jpg')] bg-cover;
+}
+.hero-title {
+  @apply z-30 absolute bg-cover flex w-full  right-0 flex-col mt-36 md:items-end text-center md:text-left xl:mr-24 gap-10  md:max-w-[25rem];
 }
 
 /* sm:flex-row  sm:relative sm:gap-6 md:mr-2 sm:bg-transparent sm:h-0 sm:p-0top-0 h-[100vh] p-20 bg-yellow-300  flex-col absolute */

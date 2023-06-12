@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useSession, getProviders, signIn, signOut } from 'next-auth/react';
 
 const Navbar = () => {
-  // console.log(getProviders);
   const { data: session } = useSession();
 
   const [providers, setProviders] = useState(null);
@@ -30,7 +29,7 @@ const Navbar = () => {
           <button onClick={signOut}>Sign Out</button>
         ) : (
           <>
-            <Link href="/signin">Sign In</Link>
+            <Link href="/signup">Sign In</Link>
             {/* {providers &&
               Object.values(providers).map((provider) => (
                 <button

@@ -7,8 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        hero: 'url(./public/images/justin-veenema-NH1d0xX6Ldk-unsplash.jpg)',
+      colors: {
+        black: '#000',
+        primary: '#F7ECEB',
+        // bg color
+        secondary: '#2b2d42',
+      },
+      letterSpacing: {
+        widest: '.4rem',
+      },
+      lineHeight: {
+        wider: '3rem',
       },
     },
   },
