@@ -6,6 +6,9 @@
 .flex-column {
   @apply flex flex-col;
 }
+p {
+  @apply mt-2;
+}
 /* .flex-row {
   @apply flex flex-row;
 } */
