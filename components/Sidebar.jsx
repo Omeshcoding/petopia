@@ -2,10 +2,11 @@ import React from 'react';
 
 import Logo from '@components/Logo';
 import logo from '../public/SVG/logodark.svg';
+import Link from 'next/link';
 
 const Sidebar = () => {
   return (
-    <div className="w-[20%] bg-secondary pl-20 pt-10 text-white">
+    <div className="w-[20%] h-[100vh] bg-secondary pl-20 pt-10 text-white">
       <Logo logo={logo} bgColor="primary" />
       <div className="mt-20">
         <h5>SERVICES</h5>
@@ -21,7 +22,7 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="mt-28">
-        <p>My account</p>
+        <Link href="/dashboard/myaccount">My account</Link>
         <p>Support</p>
         <p>Sign out</p>
       </div>

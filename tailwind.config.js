@@ -16,6 +16,7 @@ module.exports = {
         lightBrown: '#E6DBDA',
         darkbrown: '#B8817D',
         cream: '#EBD0CE',
+        darkBlue: '#636780',
       },
       letterSpacing: {
         widest: '.4rem',
