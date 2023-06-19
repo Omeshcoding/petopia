@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Sidebar = () => {
   return (
-    <div className="w-[20%] h-[100vh] bg-secondary pl-20 pt-10 text-white">
+    <div className="w-[20%] h-[100vh] bg-secondary pl-20 pt-10  text-white">
       <Logo logo={logo} bgColor="primary" />
       <div className="mt-20">
         <h5>SERVICES</h5>

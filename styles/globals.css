@@ -9,6 +9,9 @@
 p {
   @apply mt-2;
 }
+Link {
+  @apply w-20;
+}
 /* .flex-row {
   @apply flex flex-row;
 } */
