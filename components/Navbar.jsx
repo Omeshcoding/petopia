@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Logo from '../components/Logo';
+import logo from '../public/SVG/logo.svg';
 import Link from 'next/link';
 import { useSession, getProviders, signIn, signOut } from 'next-auth/react';
 
@@ -20,11 +21,11 @@ const Navbar = () => {
   console.log(providers);
   return (
     <nav className="nav">
-      <Logo />
+      <Logo logo={logo} title="PAWTASTIC" bgColor="white" />
       <div className="nav-items dropdown">
         <a>About Us </a>
         <a>Reviews</a>
-        <a>Services</a>
+        <Link href="/dashboard">Services</Link>
         {session?.user ? (
           <button onClick={signOut}>Sign Out</button>
         ) : (

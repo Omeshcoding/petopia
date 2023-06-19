@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Logo from '@/components/Logo';
+import logo from '../../public/SVG/logodark.svg';
 import { signIn, getProviders } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -25,7 +26,7 @@ const page = () => {
     <article className="flex h-[100vh] justify-center ">
       <div className="flex flex-col text-left  bg-secondary w-[40%]  pt-20  text-primary">
         <div className="mx-auto mt-20">
-          <Logo />
+          <Logo logo={logo} title="PAWTASTIC" bgColor="primary" />
           <h4 className=" text-2xl font-bold mt-14 mb-3 ml-[-14px]">
             Why our service?
           </h4>
