@@ -3,7 +3,7 @@ const layout = ({ children }) => {
   return (
     <div className="flex w-[100%]">
       <FormSidebar />
-      <div>{children}</div>
+      <div className="w-[60%]">{children}</div>
     </div>
   );
 };
