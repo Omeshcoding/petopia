@@ -12,6 +12,9 @@ p {
 Link {
   @apply w-20;
 }
+a {
+  @apply cursor-pointer;
+}
 /* .flex-row {
   @apply flex flex-row;
 } */

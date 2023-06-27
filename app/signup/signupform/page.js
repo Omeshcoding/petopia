@@ -10,10 +10,7 @@ const SignupForm = () => {
   ]);
   console.log(step);
   return (
-    <article>
-      <h2 className="text-4xl mt-20 mb-10">
-        Hello! Please tell us a little bit about yourself
-      </h2>
+    <article className="bg-lightBrown">
       {currentStepIndex + 1}/ {steps.length}
       {step}
     </article>
