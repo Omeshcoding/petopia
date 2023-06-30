@@ -5,7 +5,9 @@ export function useMultistepForm(steps) {
 
   function next() {
     setCurrentStepIndex((i) => {
+      console.log(i);
       if (i >= steps.length - 1) return i;
+      return i + 1;
     });
   }
   function back() {
@@ -21,6 +23,8 @@ export function useMultistepForm(steps) {
   return {
     currentStepIndex,
     step: steps[currentStepIndex],
+    isFirstStep: currentStepIndex === 0,
+    isLastStep: currentStepIndex === steps.length - 1,
     goTo,
     next,
     back,

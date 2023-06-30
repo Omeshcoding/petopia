@@ -1,82 +1,85 @@
+import React from 'react';
 import FormInput from '@components/FormInput';
 
-const UserProfileForms = ({
-  firstName,
-  lastName,
-  phone,
-  phoneAlt,
-  city,
+const PetBasicDetails = ({
+  petName,
+  breed,
+  birthday,
+  gender,
+  spayed,
+  weight,
   handleChange,
 }) => {
   return (
     <section>
       <h2 className="text-4xl mt-20 mb-10">
-        Hello! Please tell us a little bit about yourself
+        Yay, we love dogs! Give us the basics about your pup.
       </h2>
       <div className="text-left">
         <div className="flex flex-col gap-8">
           <div className="flex justify-between w-[100%]  ">
             <div className="flex flex-col mx-auto gap-4">
-              <label>First Name </label>
+              <label>Pet Name </label>
               <input
                 type="text"
                 className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
-                value={firstName}
-                onChange={(e) => handleChange({ firstName: e.target.value })}
+                value={petName}
+                onChange={(e) => handleChange({ petName: e.target.value })}
               />
             </div>
             <div className="flex flex-col mx-auto gap-4">
-              <label>Last Name </label>
+              <label>Breed </label>
               <input
                 type="text"
                 className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
-                value={lastName}
-                onChange={(e) => handleChange({ lastName: e.target.value })}
+                value={breed}
+                onChange={(e) => handleChange({ breed: e.target.value })}
               />
             </div>
           </div>
           <div className="flex justify-between w-[100%] ">
             <div className="flex flex-col mx-auto gap-4">
-              <label>Phone </label>
+              <label>Birthday</label>
               <input
                 type="text"
                 className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
-                value={phone}
-                onChange={(e) => handleChange({ phone: e.target.value })}
+                placeholder="MM/DD/YYYY"
+                value={birthday}
+                onChange={(e) => handleChange({ birthday: e.target.value })}
               />
             </div>
             <div className="flex flex-col mx-auto gap-4">
-              <label>Phone Alt </label>
+              <label>Gender</label>
               <input
                 type="text"
                 className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
-                value={phoneAlt}
-                onChange={(e) => handleChange({ phoneAlt: e.target.value })}
+                placeholder="Male/Female"
+                value={gender}
+                onChange={(e) => handleChange({ gender: e.target.value })}
               />
             </div>
           </div>
-          <div className="flex justify-between w-[100%] ml-4 ">
+          <div className="flex justify-between w-[100%]">
             <div className="flex flex-col mx-auto gap-4">
-              <label>City </label>
+              <label>Spayed or Neutered</label>
               <input
                 type="text"
                 className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
-                value={city}
-                onChange={(e) => handleChange({ city: e.target.value })}
+                placeholder="Male/Female"
+                value={spayed}
+                onChange={(e) => handleChange({ spayed: e.target.value })}
               />
             </div>
-            {/* <FormInput
-              label="State"
-              type="n"
-              style="w-14 py-4 pr-20 "
-              placeholder="In"
-            />
-            <FormInput
-              label="Zip"
-              type="text"
-              style="w-10 py-4 pr-20 "
-              placeholder="32789"
-            /> */}
+            <div className="flex flex-col mx-auto gap-4">
+              <label>Weight</label>
+              <input
+                type="text"
+                className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
+                placeholder="kg"
+                value={weight}
+                onChange={(e) => handleChange({ weight: e.target.value })}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -84,4 +87,4 @@ const UserProfileForms = ({
   );
 };
 
-export default UserProfileForms;
+export default PetBasicDetails;
