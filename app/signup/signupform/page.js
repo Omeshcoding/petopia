@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import UserProfileForms from '@components/Forms/UserProfileForms';
 import PetBasicsDetails from '@components/Forms/PetBasicDetails';
 import { useMultistepForm } from '@hooks/useMultistepForm';
 
 const SignupForm = () => {
+  const router = useRouter();
+  const { data: session } = useSession();
   const [data, setData] = useState({
     firstName: '',
     lastName: '',
@@ -25,17 +29,40 @@ const SignupForm = () => {
       return { ...prev, ...name };
     });
   };
-  console.log(data);
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
       <UserProfileForms {...data} handleChange={handleChange} />,
       <PetBasicsDetails {...data} handleChange={handleChange} />,
     ]);
-
-  const handleSubmit = (e) => {
+  console.log(session);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    next();
-    // conso
+    if (!isLastStep) return next();
+    try {
+      const response = await fetch('/api/petdata', {
+        method: 'POST',
+        body: JSON.stringify({
+          userId: session?.user.id,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          phone: data.phone,
+          phoneAlt: data.phoneAlt,
+          city: data.city,
+          petName: data.petName,
+          breed: data.breed,
+          birthday: data.birthday,
+          gender: data.gender,
+          spayed: data.spayed,
+          weight: data.weight,
+        }),
+      });
+
+      if (response.ok) {
+        router.push('/signup/signupform');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
