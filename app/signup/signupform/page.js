@@ -34,7 +34,6 @@ const SignupForm = () => {
       <UserProfileForms {...data} handleChange={handleChange} />,
       <PetBasicsDetails {...data} handleChange={handleChange} />,
     ]);
-  console.log(session);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isLastStep) return next();
