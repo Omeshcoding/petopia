@@ -24,7 +24,12 @@ const Navbar = () => {
       <Logo logo={logo} title="PAWTASTIC" bgColor="white" />
       <div className="nav-items dropdown">
         <a>About Us </a>
-        <a>Reviews</a>
+        <Link
+          href="/booking
+      "
+        >
+          Reviews
+        </Link>
         <Link href="/dashboard">Services</Link>
         {session?.user ? (
           <button onClick={signOut}>Sign Out</button>
