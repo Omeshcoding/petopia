@@ -4,7 +4,7 @@ import Logo from '@components/Logo';
 import logo from '../public/SVG/logodark.svg';
 import Link from 'next/link';
 
-const Sidebar = () => {
+const DashboardSidebar = () => {
   return (
     <div className="w-[20%] h-[100vh] bg-secondary pl-20 pt-10  text-white">
       <Logo logo={logo} bgColor="primary" />
@@ -35,4 +35,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default DashboardSidebar;
