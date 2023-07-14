@@ -2,19 +2,19 @@ import React from 'react';
 import Sidebar from '@components/Sidebar';
 const layout = ({ children }) => {
   const service = {
-    title: 'All services include:',
+    title: 'Why our service?',
     type: [
       {
         id: 1,
-        title: 'A photo update for you along',
+        title: "We're animal lovers",
       },
       {
         id: 2,
-        title: 'Notification of sitter arrival',
+        title: 'Powered by tech',
       },
       {
         id: 3,
-        title: 'Treats for your pet, with your',
+        title: 'Update and pics for every',
       },
     ],
   };
