@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { signIn, getProviders } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import Sidebar from '../../components/SideBar';
 
 const page = () => {
   const [providers, setProviders] = useState(null);
@@ -20,11 +19,8 @@ const page = () => {
   setTimeout(() => {
     if (session?.user) router.push('/');
   }, 1000);
-  console.log(session?.user);
   return (
     <article className="flex h-[100vh] justify-center ">
-      <Sidebar />
-
       <div className="flex flex-col gap-6 bg-primary justify-center items-center w-[60%] capitalize">
         <h2 className="head-text">Sign up to continue</h2>
         {providers &&

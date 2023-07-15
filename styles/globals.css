@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+primary: '#F7ECEB',
+        secondary: '#2b2d42',
+        white: '#F0F1F7',
+        lightGray: '#DADBE6',
+        darkGray: '#9597A6',
+        lightBrown: '#E6DBDA',
+        darkbrown: '#B8817D',
+        cream: '#EBD0CE',
+        darkBlue: '#636780', */
+
 /* Utility */
 .flex-column {
   @apply flex flex-col;
@@ -14,6 +25,9 @@ Link {
 }
 a {
   @apply cursor-pointer;
+}
+.title {
+  @apply text-4xl mt-20 mb-10;
 }
 /* .flex-row {
   @apply flex flex-row;

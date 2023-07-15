@@ -12,7 +12,7 @@ const PetBasicDetails = ({
 }) => {
   return (
     <section>
-      <h2 className="text-4xl mt-20 mb-10">
+      <h2 className="title">
         Yay, we love dogs! Give us the basics about your pup.
       </h2>
       <div className="text-left">
