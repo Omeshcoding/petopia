@@ -65,18 +65,6 @@ const UserProfileForms = ({
                 onChange={(e) => handleChange({ city: e.target.value })}
               />
             </div>
-            {/* <FormInput
-              label="State"
-              type="n"
-              style="w-14 py-4 pr-20 "
-              placeholder="In"
-            />
-            <FormInput
-              label="Zip"
-              type="text"
-              style="w-10 py-4 pr-20 "
-              placeholder="32789"
-            /> */}
           </div>
         </div>
       </div>
