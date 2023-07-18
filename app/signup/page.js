@@ -17,7 +17,7 @@ const page = () => {
     fetchProvider();
   }, []);
   setTimeout(() => {
-    if (session?.user) router.push('/');
+    if (session?.user) router.push('/signup/signupform');
   }, 1000);
   return (
     <article className="flex h-[100vh] justify-center ">
