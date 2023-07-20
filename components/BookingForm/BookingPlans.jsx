@@ -1,7 +1,7 @@
 import React from 'react';
 import dogwalkicon from '../../public/SVG/dogwalkicon.svg';
 import { LuFlower2 } from 'react-icons/lu';
-const BookingPlans = () => {
+const BookingPlans = ({ service }) => {
   return (
     <section className="w-[100%] text-center">
       <h2 className="title">We can't wait to see your pet! How can we help?</h2>

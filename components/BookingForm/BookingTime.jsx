@@ -47,7 +47,7 @@ const BookingTime = () => {
             </div>
             <div className="flex flex-col mx-auto gap-4">
               <label className="text-darkBlue">
-                Days{' '}
+                Times{' '}
                 <span className="text-darkGray">Select all that apply</span>
               </label>
               <div className="flex justify-between w-auto  border-2 px-2 border-lightBrown rounded-md ">
@@ -66,8 +66,8 @@ const BookingTime = () => {
                 name=""
                 id=""
                 cols="12"
-                rows="7"
-                className="w-[50rem] border-black"
+                rows="2"
+                className="w-[50rem] border-black p-4"
                 placeholder="Route preferences,leash location, treats given, etc."
               ></textarea>
             </div>

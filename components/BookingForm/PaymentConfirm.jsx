@@ -33,7 +33,7 @@ const PaymentConfirm = () => {
           <div className="flex justify-between border-b-white border-b-2 items-center pb-3">
             <p>PAYMENT TYPE</p>
             <p className="font-bold bg-white py-1 px-2 rounded-md">
-              Mastercard ending 2431 <span>^</span>
+              Mastercard ending 2431 <span className="">^</span>
             </p>
             <p className="font-bold">x5</p>
           </div>
