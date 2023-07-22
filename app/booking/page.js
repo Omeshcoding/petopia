@@ -8,17 +8,24 @@ import { useMultistepForm } from '@hooks/useMultistepForm';
 
 const Booking = () => {
   const [data, setData] = useState({
-    service: 'hey',
+    service: '',
     frequency: '',
     startDate: '',
     Days: '',
     Times: '',
     Notes: '',
   });
-
+  const BookingFormChange = (a) => {
+    console.log('v', a);
+    setData((prev) => {
+      console.log('he', prev);
+      return { ...prev, ...a };
+    });
+  };
+  console.log('da', data);
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
-      <BookingPlans {...data} />,
+      <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
       <BookingTime />,
       <Payment />,
       <PaymentConfirm />,
