@@ -67,7 +67,10 @@ const BookingTime = ({
               <div className="flex justify-between w-auto  border-2 px-2 py-2 border-lightBrown rounded-md ">
                 {Days.map((day, index) => {
                   return (
-                    <div className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]">
+                    <div
+                      key={index}
+                      className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]"
+                    >
                       <input
                         type="button"
                         className="mt-0 focus:bg-lightBrown first:rounded-s-lg last:rounded-e-lg py-4 px-8 "
