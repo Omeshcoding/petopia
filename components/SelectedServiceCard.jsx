@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const SelectedServiceCard = ({
   index,
@@ -6,18 +6,14 @@ const SelectedServiceCard = ({
   task,
   price,
   time,
-  handleChange,
   serviceType,
   BookingFormChange,
   data,
+  onItemsSelected,
+  selected,
 }) => {
-  const [selected, setSelected] = useState(-1);
-  let [selectedCard, setSelectedCard] = useState(false);
-  let className;
-  const onItemsSelected = (i) => {
-    handleChange(i);
-    setSelected(i);
-  };
+  const isSelected = selected ? 'selected' : 'bg-lightBrown';
+  const className = `${isSelected}`;
 
   return (
     <>
@@ -26,7 +22,7 @@ const SelectedServiceCard = ({
           BookingFormChange(data);
           onItemsSelected(index);
         }}
-        className={`flex justify-center gap-4 py-2 rounded-sm mb-4 ${className} bg-lightBrown `}
+        className={`flex justify-center gap-4 py-2 rounded-sm mb-4 ${className}`}
       >
         <i className="text-2xl my-auto p-5 bg-white text-cream ml-2 rounded-full">
           {logo}

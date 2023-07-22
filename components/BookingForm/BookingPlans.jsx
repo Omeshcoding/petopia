@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import dogwalkicon from '../../public/SVG/dogwalkicon.svg';
 import { LuFlower2 } from 'react-icons/lu';
 import SelectedServiceCard from '@components/SelectedServiceCard';
 
@@ -27,26 +26,35 @@ const BookingPlans = ({ service, BookingFormChange }) => {
       time: 'per night 30 mins',
     },
   ];
-  const [selected, setSelected] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const [selected, setSelected] = useState(-1);
 
   const handleChange = (selected) => {
-    setSelected(selected);
+    setSelectedCard(selected);
   };
-
+  const onItemsSelected = (i) => {
+    handleChange(i);
+    setSelected(i);
+  };
   return (
     <section className="w-[100%] text-center">
       <h2 className="title">We can't wait to see your pet! How can we help?</h2>
       <div className="text-left w-[50%] mx-auto mb-4">
-        {plans.map((plan, i) => (
-          <SelectedServiceCard
-            {...plan}
-            key={i}
-            index={i}
-            handleChange={handleChange}
-            data={{ service: plan.serviceType }}
-            BookingFormChange={BookingFormChange}
-          />
-        ))}
+        {plans.map((plan, i) => {
+          const isSelected = selected === i;
+          return (
+            <SelectedServiceCard
+              {...plan}
+              key={i}
+              index={i}
+              handleChange={handleChange}
+              data={{ service: plan.serviceType }}
+              BookingFormChange={BookingFormChange}
+              onItemsSelected={onItemsSelected}
+              selected={isSelected}
+            />
+          );
+        })}
       </div>
     </section>
   );
