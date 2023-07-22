@@ -1,6 +1,16 @@
 import React from 'react';
 
-const BookingTime = () => {
+const BookingTime = ({
+  frequency,
+  startDate,
+  days,
+  times,
+  note,
+  onItemsSelected,
+  handleChange,
+  BookingFormChange,
+}) => {
+  const Days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
   return (
     <section className="">
       <h2 className="title">
@@ -13,9 +23,24 @@ const BookingTime = () => {
               <div className="flex flex-col mx-auto gap-4 ">
                 <label className="text-darkBlue">Frequency</label>
 
-                <div className="flex gap-[50%] border-2 pl-5 border-lightBrown rounded-md py-4 pr-20  ">
-                  <p className="mt-0">Recurring</p>
-                  <p className="mt-0">Once</p>
+                <div className="flex py-2 px-3 border-2  border-lightBrown rounded-lg    ">
+                  <input
+                    type="button"
+                    className="mt-0  px-5 focus:bg-lightBrown rounded-s-lg"
+                    value="Recurring"
+                    onClick={(e) =>
+                      BookingFormChange({ frequency: e.target.value })
+                    }
+                  />
+
+                  <input
+                    type="button"
+                    className="mt-0 px-5 text-center py-4  ml-[.1rem] rounded-e-lg focus:bg-lightBrown"
+                    value="Once"
+                    onClick={(e) =>
+                      BookingFormChange({ frequency: e.target.value })
+                    }
+                  />
                 </div>
               </div>
               <div className="flex flex-col mx-auto gap-4">
@@ -27,6 +52,10 @@ const BookingTime = () => {
                   type="text"
                   className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
                   placeholder="MM/DD/YYYY"
+                  value={startDate}
+                  onChange={(e) =>
+                    BookingFormChange({ startDate: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -35,14 +64,18 @@ const BookingTime = () => {
                 Days{' '}
                 <span className="text-darkGray">Select all that apply</span>
               </label>
-              <div className="flex justify-between w-auto  border-2 px-2 border-lightBrown rounded-md ">
-                <p className="mt-0  py-4 px-8">Mon</p>
-                <p className="mt-0 border-black border-l-2 py-4 px-11">Tue</p>
-                <p className="mt-0  border-black border-l-2 py-4 px-11">Wed</p>
-                <p className="mt-0  border-black border-l-2 py-4 px-11">Thur</p>
-                <p className="mt-0  border-black border-l-2 py-4 px-11">Fri</p>
-                <p className="mt-0  border-black border-l-2 py-4 px-11">Sat</p>
-                <p className="mt-0  border-black border-l-2 py-4 px-11">Sun</p>
+              <div className="flex justify-between w-auto  border-2 px-2 py-2 border-lightBrown rounded-md ">
+                {Days.map((day, index) => {
+                  return (
+                    <div className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]">
+                      <input
+                        type="button"
+                        className="mt-0 focus:bg-lightBrown first:rounded-s-lg last:rounded-e-lg py-4 px-8 "
+                        value={day}
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="flex flex-col mx-auto gap-4">
