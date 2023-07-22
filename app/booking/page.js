@@ -16,13 +16,11 @@ const Booking = () => {
     Notes: '',
   });
   const BookingFormChange = (a) => {
-    console.log('v', a);
     setData((prev) => {
-      console.log('he', prev);
       return { ...prev, ...a };
     });
   };
-  console.log('da', data);
+
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
       <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
