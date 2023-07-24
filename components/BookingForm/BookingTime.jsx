@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const BookingTime = ({
   frequency,
@@ -6,11 +6,35 @@ const BookingTime = ({
   days,
   times,
   note,
-  onItemsSelected,
-  handleChange,
   BookingFormChange,
+  multiple,
+  maxSelected,
 }) => {
+  const [selected, setSelected] = useState(multiple && []);
+  const [hasUpdated, setHasUpdated] = useState(false);
   const Days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+
+  const onItemsSelected = (index, name) => {
+    if (multiple && name) {
+      if (!selected.includes(name)) {
+        const selectedIndexes = [...selected, name];
+        setSelected(selectedIndexes);
+      } else {
+        const selectedIndexes = selected.filter((day) => day !== name);
+        setSelected(selectedIndexes);
+      }
+    } else {
+      setSelected(name);
+    }
+    setHasUpdated(true);
+  };
+  useEffect(() => {
+    if (hasUpdated) {
+      BookingFormChange({ days: selected });
+      setHasUpdated(true);
+    }
+  }, [hasUpdated, selected]);
+
   return (
     <section className="">
       <h2 className="title">
@@ -29,7 +53,9 @@ const BookingTime = ({
                     className="mt-0  px-5 focus:bg-lightBrown rounded-s-lg"
                     value="Recurring"
                     onClick={(e) =>
-                      BookingFormChange({ frequency: e.target.value })
+                      BookingFormChange(() => {
+                        frequency: e.target.value;
+                      })
                     }
                   />
 
@@ -66,14 +92,23 @@ const BookingTime = ({
               </label>
               <div className="flex justify-between w-auto  border-2 px-2 py-2 border-lightBrown rounded-md ">
                 {Days.map((day, index) => {
+                  const isSelected = selected.includes(day)
+                    ? 'bg-lightBrown'
+                    : '';
+                  const bgColor = `${isSelected}`;
                   return (
                     <div
+                      onClick={() => {
+                        onItemsSelected(index, day);
+                      }}
                       key={index}
                       className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]"
                     >
                       <input
                         type="button"
-                        className="mt-0 focus:bg-lightBrown first:rounded-s-lg last:rounded-e-lg py-4 px-8 "
+                        className={`
+                        ${bgColor}
+                        mt-0  first:rounded-s-lg last:rounded-e-lg py-4 px-8 `}
                         value={day}
                       />
                     </div>
