@@ -12,7 +12,7 @@ const Booking = () => {
     frequency: '',
     startDate: '',
     days: [],
-    times: '',
+    times: [],
     note: '',
   });
   const BookingFormChange = (a) => {
@@ -20,15 +20,11 @@ const Booking = () => {
       return { ...prev, ...a };
     });
   };
+  console.log(data);
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
       // <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
-      <BookingTime
-        {...data}
-        BookingFormChange={BookingFormChange}
-        multiple
-        maxSelected={7}
-      />,
+      <BookingTime {...data} BookingFormChange={BookingFormChange} multiple />,
       <Payment />,
       <PaymentConfirm />,
     ]);

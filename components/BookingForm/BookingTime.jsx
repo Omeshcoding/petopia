@@ -3,18 +3,16 @@ import React, { useEffect, useState } from 'react';
 const BookingTime = ({
   frequency,
   startDate,
-  days,
-  times,
   note,
   BookingFormChange,
   multiple,
-  maxSelected,
 }) => {
   const [selected, setSelected] = useState(multiple && []);
+  const [selectedTime, setSelectedTime] = useState(multiple && []);
   const [hasUpdated, setHasUpdated] = useState(false);
   const Days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
 
-  const onItemsSelected = (index, name) => {
+  const onItemsSelected = (name) => {
     if (multiple && name) {
       if (!selected.includes(name)) {
         const selectedIndexes = [...selected, name];
@@ -28,12 +26,30 @@ const BookingTime = ({
     }
     setHasUpdated(true);
   };
+  const onTimeSelected = (name) => {
+    console.log(name);
+    if (multiple && name) {
+      if (!selectedTime.includes(name)) {
+        const timeSelected = [...selectedTime, name];
+        setSelectedTime(timeSelected);
+      } else {
+        const timeSelected = selectedTime.filter((time) => time !== name);
+        setSelectedTime(timeSelected);
+      }
+    } else {
+      setSelectedTime(name);
+    }
+    setHasUpdated(true);
+  };
+  console.log(selectedTime);
+
   useEffect(() => {
     if (hasUpdated) {
       BookingFormChange({ days: selected });
+      BookingFormChange({ times: selectedTime });
       setHasUpdated(true);
     }
-  }, [hasUpdated, selected]);
+  }, [hasUpdated, selected, selectedTime]);
 
   return (
     <section className="">
@@ -98,9 +114,7 @@ const BookingTime = ({
                   const bgColor = `${isSelected}`;
                   return (
                     <div
-                      onClick={() => {
-                        onItemsSelected(index, day);
-                      }}
+                      onClick={() => onItemsSelected(day)}
                       key={index}
                       className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]"
                     >
@@ -121,14 +135,22 @@ const BookingTime = ({
                 Times{' '}
                 <span className="text-darkGray">Select all that apply</span>
               </label>
-              <div className="flex justify-between w-auto  border-2 px-2 border-lightBrown rounded-md ">
-                <p className="mt-0  py-4 px-[6.2rem]">Morning</p>
-                <p className="mt-0 border-black border-l-2 py-4 px-[6.2rem]">
-                  Afternoon
-                </p>
-                <p className="mt-0  border-black border-l-2 py-4 px-[6.2rem]">
-                  Evening
-                </p>
+              <div className="flex justify-between w-auto  border-2 px-2 border-lightBrown  py-2 rounded-lg">
+                {['Morning', 'Afternoon', 'Evening'].map((time, index) => {
+                  const isSelected = selectedTime.includes(time)
+                    ? 'bg-lightBrown'
+                    : '';
+                  const bgColor = `${isSelected}`;
+                  return (
+                    <div
+                      key={index}
+                      className={`mt-0 ${bgColor}  py-4 px-[6.2rem] ml-2 rounded-lg`}
+                      onClick={() => onTimeSelected(time)}
+                    >
+                      <input type="button" value={time} />
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="flex flex-col mx-auto gap-4">
