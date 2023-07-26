@@ -7,14 +7,12 @@ import PaymentConfirm from '@components/BookingForm/PaymentConfirm';
 import { useMultistepForm } from '@hooks/useMultistepForm';
 
 const Booking = () => {
-  const [selectedCard, setSelectedCard] = useState(null);
-  const [selected, setSelected] = useState(-1);
   const [data, setData] = useState({
     service: '',
     frequency: '',
     startDate: '',
-    days: '',
-    times: '',
+    days: [],
+    times: [],
     note: '',
   });
   const BookingFormChange = (a) => {
@@ -22,24 +20,11 @@ const Booking = () => {
       return { ...prev, ...a };
     });
   };
-  const handleChange = (selected) => {
-    setSelectedCard(selected);
-  };
-  const onItemsSelected = (i) => {
-    console.log('hello', i);
-    handleChange(i);
-    setSelected(i);
-  };
-
+  console.log(data);
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
       // <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
-      <BookingTime
-        {...data}
-        BookingFormChange={BookingFormChange}
-        handleChange={handleChange}
-        onItemsSelected={onItemsSelected}
-      />,
+      <BookingTime {...data} BookingFormChange={BookingFormChange} multiple />,
       <Payment />,
       <PaymentConfirm />,
     ]);
@@ -48,6 +33,7 @@ const Booking = () => {
     e.preventDefault();
     return next();
   };
+
   return (
     <form className="bg-white h-[100%]" onSubmit={handleSubmit}>
       {currentStepIndex + 1}/ {steps.length}
