@@ -11,6 +11,7 @@ const BookingTime = ({
   const [selectedTime, setSelectedTime] = useState(multiple && []);
   const [hasUpdated, setHasUpdated] = useState(false);
   const Days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+  const [changeBg, setChangeBg] = useState('');
 
   const onItemsSelected = (name) => {
     if (multiple && name) {
@@ -42,7 +43,10 @@ const BookingTime = ({
     setHasUpdated(true);
   };
   console.log(selectedTime);
-
+  const handleFrequency = (e) => {
+    setChangeBg(e.target.value);
+    BookingFormChange({ frequency: e.target.value });
+  };
   useEffect(() => {
     if (hasUpdated) {
       BookingFormChange({ days: selected });
@@ -66,22 +70,22 @@ const BookingTime = ({
                 <div className="flex py-2 px-3 border-2  border-lightBrown rounded-lg    ">
                   <input
                     type="button"
-                    className="mt-0  px-5 focus:bg-lightBrown rounded-s-lg"
+                    className={`mt-0  px-5 active: rounded-s-lg border-2  border-lightBrown ${
+                      changeBg === 'Recurring' && 'bg-lightBrown'
+                    }`}
                     value="Recurring"
-                    onClick={(e) =>
-                      BookingFormChange(() => {
-                        frequency: e.target.value;
-                      })
-                    }
+                    onClick={(e) => handleFrequency(e)}
+                    required
                   />
 
                   <input
                     type="button"
-                    className="mt-0 px-5 text-center py-4  ml-[.1rem] rounded-e-lg focus:bg-lightBrown"
+                    className={`mt-0 px-5 text-center py-4  ml-[.1rem] rounded-e-lg focus:bg-lightBrown border-2  border-lightBrown ${
+                      changeBg === 'Once' && 'bg-lightBrown'
+                    }`}
                     value="Once"
-                    onClick={(e) =>
-                      BookingFormChange({ frequency: e.target.value })
-                    }
+                    onClick={(e) => handleFrequency(e)}
+                    required
                   />
                 </div>
               </div>
@@ -94,10 +98,12 @@ const BookingTime = ({
                   type="text"
                   className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
                   placeholder="MM/DD/YYYY"
+                  max="25-07-2123"
                   value={startDate}
                   onChange={(e) =>
                     BookingFormChange({ startDate: e.target.value })
                   }
+                  required
                 />
               </div>
             </div>
@@ -116,14 +122,15 @@ const BookingTime = ({
                     <div
                       onClick={() => onItemsSelected(day)}
                       key={index}
-                      className=" first:rounded-s-lg last:rounded-e-lg ml-[.1rem]"
+                      className=" rounded-lg ml-2 border-2  border-lightBrown"
                     >
                       <input
                         type="button"
                         className={`
                         ${bgColor}
-                        mt-0  first:rounded-s-lg last:rounded-e-lg py-4 px-8 `}
+                        mt-0  rounded-lg py-4 px-8 `}
                         value={day}
+                        required
                       />
                     </div>
                   );
@@ -144,10 +151,10 @@ const BookingTime = ({
                   return (
                     <div
                       key={index}
-                      className={`mt-0 ${bgColor}  py-4 px-[6.2rem] ml-2 rounded-lg`}
+                      className={`mt-0 ${bgColor}  py-4 px-[6.2rem] ml-2 rounded-lg border-2  border-lightBrown`}
                       onClick={() => onTimeSelected(time)}
                     >
-                      <input type="button" value={time} />
+                      <input type="button" value={time} required />
                     </div>
                   );
                 })}
@@ -160,9 +167,11 @@ const BookingTime = ({
                 id=""
                 cols="12"
                 rows="2"
+                value={note}
+                onChange={(e) => BookingFormChange({ note: e.target.value })}
                 className="w-[50rem] border-black p-4"
                 placeholder="Route preferences,leash location, treats given, etc."
-              ></textarea>
+              />
             </div>
           </div>
         </div>

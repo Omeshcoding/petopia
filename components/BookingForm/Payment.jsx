@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Payment = () => {
+const Payment = ({
+  nameOnCard,
+  cardNumber,
+  expDate,
+  cvc,
+  BookingFormChange,
+}) => {
   return (
     <section>
       <h2 className="title ml-16">
@@ -13,8 +19,12 @@ const Payment = () => {
               <label>Name on Card</label>
               <input
                 type="text"
-                className={`border-2 pl-5 w-[30vw] border-lightBrown rounded-md py-4 pr-20 `}
                 placeholder="John"
+                value={nameOnCard}
+                className={`border-2 pl-5 w-[30vw] border-lightBrown rounded-md py-4 pr-20 `}
+                onChange={(e) =>
+                  BookingFormChange({ nameOnCard: e.target.value })
+                }
               />
             </div>
           </div>
@@ -23,8 +33,12 @@ const Payment = () => {
               <label>Card Number</label>
               <input
                 type="text"
-                className={`border-2 pl-5 border-lightBrown rounded-md py-4 w-[30vw]  pr-20 `}
                 placeholder="1234 5678 9012 3456"
+                value={cardNumber}
+                className={`border-2 pl-5 border-lightBrown rounded-md py-4 w-[30vw]  pr-20 `}
+                onChange={(e) =>
+                  BookingFormChange({ cardNumber: e.target.value })
+                }
               />
             </div>
           </div>
@@ -33,16 +47,20 @@ const Payment = () => {
               <label>Expiration Date</label>
               <input
                 type="text"
-                className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
                 placeholder="01/12"
+                value={expDate}
+                className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
+                onChange={(e) => BookingFormChange({ expDate: e.target.value })}
               />
             </div>
             <div className="flex flex-col mx-auto gap-4">
               <label>CVC</label>
               <input
                 type="text"
-                className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
                 placeholder="123"
+                value={cvc}
+                className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
+                onChange={(e) => BookingFormChange({ cvc: e.target.value })}
               />
             </div>
           </div>
