@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LuFlower2 } from 'react-icons/lu';
 import SelectedServiceCard from '@components/SelectedServiceCard';
 
-const BookingPlans = ({ service, BookingFormChange }) => {
+const BookingPlans = ({ BookingFormChange }) => {
   const plans = [
     {
       logo: <LuFlower2 />,

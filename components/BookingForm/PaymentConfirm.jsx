@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PaymentConfirm = () => {
+const PaymentConfirm = ({ service, times }) => {
   return (
     <section>
       <h2 className="title ml-16 text-center">
@@ -14,14 +14,14 @@ const PaymentConfirm = () => {
           <div className="flex  justify-between  border-b-white border-b-2 pb-3 ">
             <p>SERVICE TYPE</p>
             <p className="bg-white px-3 py-1 rounded-full font-bold">
-              Dog walk
+              {service}
             </p>
             <p className=" font-bold">$15/walk</p>
           </div>
           <div className="flex  justify-between  border-b-white border-b items-center-2 pb-3">
             <p>SERVICE TIME</p>
             <p className=" font-bold bg-white px-3 py-1 rounded-full ml-[-34px]">
-              Morning
+              {times}
             </p>
             <p className=" font-bold">x2</p>
           </div>
@@ -47,18 +47,6 @@ const PaymentConfirm = () => {
           </p>
         </div>
       </div>
-      {/* <div className=''>
-        <h4>Dog walk for Ginger</h4>
-        <div>
-      <div>
-       
-          </div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-        <div></div>
-      </div> */}
     </section>
   );
 };

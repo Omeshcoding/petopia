@@ -14,6 +14,10 @@ const Booking = () => {
     days: [],
     times: [],
     note: '',
+    nameOnCard: '',
+    cardNumber: '',
+    expDate: '',
+    cvc: '',
   });
   const BookingFormChange = (a) => {
     setData((prev) => {
@@ -23,10 +27,10 @@ const Booking = () => {
   console.log(data);
   const { steps, currentStepIndex, step, isFirstStep, back, next, isLastStep } =
     useMultistepForm([
-      // <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
+      <BookingPlans {...data} BookingFormChange={BookingFormChange} />,
       <BookingTime {...data} BookingFormChange={BookingFormChange} multiple />,
-      <Payment />,
-      <PaymentConfirm />,
+      <Payment {...data} BookingFormChange={BookingFormChange} />,
+      <PaymentConfirm {...data} />,
     ]);
 
   const handleSubmit = async (e) => {
