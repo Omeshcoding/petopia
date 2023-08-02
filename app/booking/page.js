@@ -5,8 +5,11 @@ import BookingTime from '@components/BookingForm/BookingTime';
 import Payment from '@components/BookingForm/Payment';
 import PaymentConfirm from '@components/BookingForm/PaymentConfirm';
 import { useMultistepForm } from '@hooks/useMultistepForm';
-
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 const Booking = () => {
+  const router = useRouter();
+  const { data: session } = useSession();
   const [data, setData] = useState({
     service: '',
     frequency: '',
@@ -35,12 +38,36 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    return next();
+
+    if (!isLastStep) return next();
+    try {
+      const response = await fetch('/api/booking', {
+        method: 'POST',
+        body: JSON.stringify({
+          userId: session?.user.id,
+          service: data.service,
+          frequency: data.frequency,
+          startDate: data.startDate,
+          days: data.days,
+          times: data.times,
+          note: data.note,
+          nameOnCard: data.nameOnCard,
+          cardNumber: data.cardNumber,
+          expDate: data.expDate,
+          cvc: data.cvc,
+        }),
+      });
+      if (response.ok) {
+        router.push('/dashboard');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  console.log(data);
   return (
-    <form className="bg-white h-[100%]" onSubmit={handleSubmit}>
-      {currentStepIndex + 1}/ {steps.length}
+    <form className="bg-white h-[90%]" onSubmit={handleSubmit}>
       {step}
       <div className="mt-5 h-10 flex gap-2 justify-end items-end mx-10 ">
         {!isFirstStep && (

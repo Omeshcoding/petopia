@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const MyAccount = () => {
   return (
-    <section className="w-[100%] h-[100vh]  ">
+    <section className="w-[100%] h-[750px]  ">
       <div className="mb-14   border-b-2 border-lightGray">
         <h4 className="text-3xl ml-16 text-darkGray py-8">My Account</h4>
       </div>
