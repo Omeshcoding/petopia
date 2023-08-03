@@ -1,44 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
+const BookingTime = ({
+  startDate,
+  note,
+  BookingFormChange,
+  changeBg,
+  handleStyles,
+  onItemsSelected,
+  selected,
+  selectedTime,
+  onTimeSelected,
+  hasUpdated,
+  setHasUpdated,
+}) => {
   const Days = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
-  const [selected, setSelected] = useState(multiple && []);
-  const [selectedTime, setSelectedTime] = useState(multiple && []);
-  const [hasUpdated, setHasUpdated] = useState(false);
-  const [changeBg, setChangeBg] = useState('');
 
-  const onItemsSelected = (name) => {
-    if (multiple && name) {
-      if (!selected.includes(name)) {
-        const selectedIndexes = [...selected, name];
-        setSelected(selectedIndexes);
-      } else {
-        const selectedIndexes = selected.filter((day) => day !== name);
-        setSelected(selectedIndexes);
-      }
-    } else {
-      setSelected(name);
-    }
-    setHasUpdated(true);
-  };
-  const onTimeSelected = (name) => {
-    console.log(name);
-    if (multiple && name) {
-      if (!selectedTime.includes(name)) {
-        const timeSelected = [...selectedTime, name];
-        setSelectedTime(timeSelected);
-      } else {
-        const timeSelected = selectedTime.filter((time) => time !== name);
-        setSelectedTime(timeSelected);
-      }
-    } else {
-      setSelectedTime(name);
-    }
-    setHasUpdated(true);
-  };
-  console.log(selectedTime);
   const handleFrequency = (e) => {
-    setChangeBg(e.target.value);
     BookingFormChange({ frequency: e.target.value });
   };
   useEffect(() => {
@@ -55,10 +32,10 @@ const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
         Okay, we’ll take Ginger for a walk. Just tell us when!
       </h2>
       <div>
-        <div className="text-left">
+        <div className="text-left mx-20">
           <div className="flex flex-col gap-8">
-            <div className="flex justify-between w-[100%] ">
-              <div className="flex flex-col mx-auto gap-4 ">
+            <div className="flex justify-between px-[11px] w-[100%] ">
+              <div className="flex flex-col  gap-4 ">
                 <label className="text-darkBlue">Frequency</label>
 
                 <div className="flex py-2 px-3 border-2  border-lightBrown rounded-lg    ">
@@ -68,7 +45,10 @@ const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
                       changeBg === 'Recurring' && 'bg-lightBrown'
                     }`}
                     value="Recurring"
-                    onClick={(e) => handleFrequency(e)}
+                    onClick={(e) => {
+                      handleStyles(e);
+                      handleFrequency(e);
+                    }}
                     required
                   />
 
@@ -78,18 +58,21 @@ const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
                       changeBg === 'Once' && 'bg-lightBrown'
                     }`}
                     value="Once"
-                    onClick={(e) => handleFrequency(e)}
+                    onClick={(e) => {
+                      handleStyles(e);
+                      handleFrequency(e);
+                    }}
                     required
                   />
                 </div>
               </div>
-              <div className="flex flex-col mx-auto gap-4">
+              <div className="flex flex-col gap-4">
                 <label className="text-darkBlue">
                   Start date <span>(DD/MM/YYYY)</span>
                 </label>
                 <input
                   type="text"
-                  className={`border-2 pl-5 border-lightBrown rounded-md py-4 pr-20 `}
+                  className={`border-2 pl-5 border-lightBrown rounded-md mt-2 py-4 pr-20 `}
                   placeholder="DD/MM/YYYY"
                   max="25-07-2123"
                   value={startDate}
@@ -115,7 +98,7 @@ const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
                     <div
                       onClick={() => onItemsSelected(day)}
                       key={index}
-                      className=" rounded-lg ml-2 border-2  border-lightBrown"
+                      className=" rounded-lg  border-2 mx-[11px] border-lightBrown"
                     >
                       <input
                         type="button"
@@ -162,7 +145,7 @@ const BookingTime = ({ startDate, note, BookingFormChange, multiple }) => {
                 rows="2"
                 value={note}
                 onChange={(e) => BookingFormChange({ note: e.target.value })}
-                className="w-[50rem] border-black p-4 resize-none"
+                className="w-[52rem] border-black p-6 resize-none rounded-lg"
                 placeholder="Route preferences,leash location, treats given, etc."
               />
             </div>

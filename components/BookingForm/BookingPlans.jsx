@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { LuFlower2 } from 'react-icons/lu';
 import SelectedServiceCard from '@components/SelectedServiceCard';
 
-const BookingPlans = ({ BookingFormChange }) => {
+const BookingPlans = ({ BookingFormChange, setSelectedPlan, selectedPlan }) => {
   const plans = [
     {
       logo: <LuFlower2 />,
@@ -27,21 +27,20 @@ const BookingPlans = ({ BookingFormChange }) => {
     },
   ];
   const [selectedCard, setSelectedCard] = useState(null);
-  const [selected, setSelected] = useState(-1);
 
   const handleChange = (selected) => {
     setSelectedCard(selected);
   };
   const onItemsSelected = (i) => {
     handleChange(i);
-    setSelected(i);
+    setSelectedPlan(i);
   };
   return (
     <section className="w-[100%] text-center">
       <h2 className="title">We can't wait to see your pet! How can we help?</h2>
       <div className="text-left w-[50%] mx-auto mb-4">
         {plans.map((plan, i) => {
-          const isSelected = selected === i;
+          const isSelected = selectedPlan === i;
           return (
             <SelectedServiceCard
               {...plan}
