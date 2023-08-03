@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const MyServices = () => {
   return (
-    <section className="h-[100vh]  ">
+    <section className="h-[730px]  ">
       <div className="h-[10%] pt-10 ml-16">
         <h4 className="text-3xl text-darkGray">My Services</h4>
       </div>
