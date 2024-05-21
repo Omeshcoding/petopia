@@ -23,19 +23,19 @@ const Navbar = () => {
     <nav className="nav">
       <Logo logo={logo} title="PAWTASTIC" bgColor="white" />
       <div className="nav-items dropdown">
-        <a>About Us </a>
+        <Link href="/signup/signupform">Signup</Link>
         <Link
           href="/booking
       "
         >
           Reviews
         </Link>
-        <Link href="/dashboard">Services</Link>
+        <Link href="/dashboard">Dashboard</Link>
         {session?.user ? (
           <button onClick={signOut}>Sign Out</button>
         ) : (
           <>
-            <Link href="/signup">Sign In</Link>
+            <Link href="/booking">Booking</Link>
             {/* {providers &&
               Object.values(providers).map((provider) => (
                 <button

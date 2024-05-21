@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MyServices from '@components/MyServices';
+import MyServices from '@components/MyServices/MyServices';
 
 const page = () => {
   return (

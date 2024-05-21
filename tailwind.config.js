@@ -25,6 +25,15 @@ module.exports = {
       lineHeight: {
         wider: '3rem',
       },
+      fontSize: {
+        h1: '54px',
+        h2: '48px',
+        h3: '36px',
+        h4: '24px',
+        para: '24px',
+        'sidebar-text': '20px',
+        'small-text': '12px',
+      },
     },
   },
   plugins: [],
