@@ -2,6 +2,7 @@ import React from 'react';
 
 import MyServices from '@components/MyServices/MyServices';
 import PetProfile from '@components/DashboardDetails/PetProfile';
+import SitterProfile from '@components/DashboardDetails/SitterProfile';
 
 const page = () => {
   return (
@@ -11,6 +12,7 @@ const page = () => {
       </div>
       <div className="w-[60%] bg-slate-300">
         <PetProfile />
+        <SitterProfile />
       </div>
     </article>
   );
