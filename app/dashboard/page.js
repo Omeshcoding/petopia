@@ -6,6 +6,7 @@ import SitterProfile from '@components/DashboardDetails/SitterProfile';
 import ServiceAddress from '@components/DashboardDetails/ServiceAddress';
 import ServiceQuote from '@components/DashboardDetails/ServiceQuote';
 import SitterNotAssigned from '@components/DashboardDetails/SitterNotAssigned';
+import SitterServicesButton from '@components/DashboardDetails/SitterServicesButton';
 
 const page = () => {
   return (
@@ -22,6 +23,7 @@ const page = () => {
         <ServiceAddress />
         <ServiceQuote />
         <SitterProfile />
+        <SitterServicesButton />
       </div>
     </article>
   );

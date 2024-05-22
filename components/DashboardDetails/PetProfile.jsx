@@ -14,8 +14,8 @@ const PetProfile = () => {
           alt="profileimage"
           className="mx-auto rounded-full border-2 border-darkerGray"
         />
-        <div className=" text-center capitalize mb-4">
-          <h3 className="text-darkerGray font-semibold ">Ginger</h3>
+        <div className=" text-center capitalize mb-8">
+          <p className="text-darkerGray font-semibold ">Ginger</p>
           <p className="text-darkGray ">breed name</p>
         </div>
       </div>
@@ -23,7 +23,7 @@ const PetProfile = () => {
         <h4 className="uppercase font-bold text-[16px] text-darkGray">
           Favorite Things
         </h4>
-        <ul className="flex justify-center gap-5  py-2 flex-wrap">
+        <ul className="flex justify-center gap-5  py-2 flex-wrap mt-2">
           {['Barking', 'Snuggling', 'Walks', 'Treats', 'Giving kisses'].map(
             (item, index) => (
               <li
