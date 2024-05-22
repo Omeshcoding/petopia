@@ -5,7 +5,7 @@ import { FaStar } from 'react-icons/fa';
 
 const SitterProfile = () => {
   return (
-    <div className="flex justify-center  sm:justify-between  p-6 bg-white m-4 rounded-md sm:items-center flex-wrap gap-4">
+    <div className="flex justify-center  sm:justify-between  p-6 bg-white my-2 md:my-4 rounded-md sm:items-center flex-wrap gap-4">
       <div className="flex flex-wrap justify-center sm:justify-start">
         <Image
           src={profileImg}

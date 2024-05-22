@@ -5,7 +5,7 @@ import profileImg from '@public/SVG/ginger.svg';
 
 const PetProfile = () => {
   return (
-    <div className="bg-white m-4 pb-8 rounded-md">
+    <div className="bg-white md:my-4 pb-8 rounded-md px-2">
       <div>
         <Image
           src={profileImg}
@@ -28,7 +28,7 @@ const PetProfile = () => {
             (item, index) => (
               <li
                 key={index}
-                className=" bg-lightBrown border-lightGray px-4 py-[2px] rounded-full"
+                className=" bg-lightBrown border-lightGray px-4 py-[2px] text-small-text md:text-md rounded-full"
               >
                 {item}{' '}
               </li>

@@ -9,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="relative h-[120vh]">
+      <body>
         <Provider>{children}</Provider>
       </body>
     </html>
