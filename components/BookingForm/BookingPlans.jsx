@@ -35,6 +35,7 @@ const BookingPlans = ({ BookingFormChange, setSelectedPlan, selectedPlan }) => {
     handleChange(i);
     setSelectedPlan(i);
   };
+  // console.log(1, !selectedCard);
   return (
     <section className="w-[100%] text-center">
       <h2 className="title">We can't wait to see your pet! How can we help?</h2>
@@ -49,7 +50,7 @@ const BookingPlans = ({ BookingFormChange, setSelectedPlan, selectedPlan }) => {
               handleChange={handleChange}
               data={{ service: plan.serviceType }}
               BookingFormChange={BookingFormChange}
-              onItemsSelected={onItemsSelected}
+              onItemsSelected={selectedCard && onItemsSelected}
               selected={isSelected}
             />
           );

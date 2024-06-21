@@ -28,24 +28,45 @@ const Booking = () => {
     expDate: '',
     cvc: '',
   });
+  // const requiredInputs = [
+  //   'service',
+  //   'frequency',
+  //   'startDate',
+  //   'days',
+  //   'times',
+  //   'note',
+  //   'nameOnCard',
+  //   'cardNumber',
+  //   'expDate',
+  //   'cvc',
+  // ];
+  // const anyDataEmpty = Object.values(requiredInputs).some((value) => {
+  //   console.log(value);
+  //   return !value;
+  // });
+  // console.log(anyDataEmpty);
   const BookingFormChange = (a) => {
     setData((prev) => {
       return { ...prev, ...a };
     });
   };
   const onItemsSelected = (name) => {
-    if (multiple && name) {
-      if (!selected.includes(name)) {
-        const selectedIndexes = [...selected, name];
-        setSelected(selectedIndexes);
-      } else {
-        const selectedIndexes = selected.filter((day) => day !== name);
-        setSelected(selectedIndexes);
-      }
+    if (anyDataEmpty) {
+      console.log('enter the required');
     } else {
-      setSelected(name);
+      if (multiple && name) {
+        if (!selected.includes(name)) {
+          const selectedIndexes = [...selected, name];
+          setSelected(selectedIndexes);
+        } else {
+          const selectedIndexes = selected.filter((day) => day !== name);
+          setSelected(selectedIndexes);
+        }
+      } else {
+        setSelected(name);
+      }
+      setHasUpdated(true);
     }
-    setHasUpdated(true);
   };
   const onTimeSelected = (name) => {
     if (multiple && name) {
@@ -131,7 +152,11 @@ const Booking = () => {
           </button>
         )}
 
-        <button className={`btn rounded-full `} type="submit">
+        <button
+          className={`btn rounded-full `}
+          type="submit"
+          // disabled={requiredInputs.some((value) => !data[value])}
+        >
           {isLastStep ? 'Schedule Service' : 'Next'}
         </button>
       </div>
